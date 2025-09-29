@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gestión de Clientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-dark bg-primary mb-4">
+      <div class="container">
+        <span class="navbar-brand mb-0 h1">Gestión de Clientes</span>
+        <button class="btn btn-outline-light" id="btnRefresh">Refrescar</button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Form Agregar -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Agregar nuevo cliente</h5>
+          <form id="formAdd">
+            <div class="row g-2">
+              <div class="col-md-3">
+                <input required name="nombre" class="form-control" placeholder="Nombre">
+              </div>
+              <div class="col-md-3">
+                <input required name="email" type="email" class="form-control" placeholder="Email">
+              </div>
+              <div class="col-md-2">
+                <input name="telefono" class="form-control" placeholder="Teléfono">
+              </div>
+              <div class="col-md-3">
+                <input name="direccion" class="form-control" placeholder="Dirección">
+              </div>
+              <div class="col-md-1 d-grid">
+                <button class="btn btn-success" type="submit">Agregar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tabla clientes -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Lista de clientes</h5>
+          <div class="table-responsive">
+            <table class="table table-striped" id="clientsTable">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th>Teléfono</th>
+                  <th>Dirección</th>
+                  <th>Creado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Edición -->
+    <div class="modal fade" id="editModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="formEdit">
+            <div class="modal-header">
+              <h5 class="modal-title">Editar Cliente</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="editId">
+              <div class="mb-2">
+                <input id="editNombre" name="nombre" class="form-control" placeholder="Nombre" required>
+              </div>
+              <div class="mb-2">
+                <input id="editEmail" name="email" type="email" class="form-control" placeholder="Email" required>
+              </div>
+              <div class="mb-2">
+                <input id="editTelefono" name="telefono" class="form-control" placeholder="Teléfono">
+              </div>
+              <div class="mb-2">
+                <input id="editDireccion" name="direccion" class="form-control" placeholder="Dirección">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancelar</button>
+              <button class="btn btn-primary" type="submit">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+  </body>
+</html>
